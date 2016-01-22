@@ -1,16 +1,21 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello World!</title>
+    <title>Hello World!</title>
 </head>
 <body>
 <p>
-	Welcome {{username}}
+    Welcome {{username}}
+    <ul>
+        %for thing in things:
+        <li>{{ thing }}</li>
+        %end
+    </ul>
 </p>
-<ul>
-	%for thing in things:
-	<li>{{ thing }}</li>
-	%end
-</ul>
+<form action='/favorite_color' method="POST">
+    What if your favorite color?
+    <input type="text" name='color' size="40" value=""><br>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
