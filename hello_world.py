@@ -15,7 +15,16 @@ def favorite_color():
     color = bottle.request.forms.get('color')
     if color is None or color == "":
         color = 'No Color Selected'
-    return bottle.template('favorite_color.tpl', color=color)
+
+    bottle.response.set_cookie('color', color)
+    bottle.redirect("/show_color")
+    # return bottle.template('favorite_color.tpl', color=color)
+
+@bottle.route('/show_color')
+def show_color():
+    color = bottle.request.get_cookie("color")
+
+    return bottle.template('show_color', color=color)
 
 bottle.debug(True)
 bottle.run(host='localhost', port=8081)
