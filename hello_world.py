@@ -2,7 +2,9 @@ import bottle
 
 @bottle.route('/')
 def home_page():
-	return 'hello_world\n'
+	mythings = ['red', 'blue', 'green', 'purple']
+	return bottle.template('hello_world', username='Perry', things=mythings)
+	# return 'hello_world\n'
 
 @bottle.route('/testpage')
 def test_page():
